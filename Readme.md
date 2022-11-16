@@ -19,4 +19,4 @@
 
 
 ### Steps
-
+ - npm i express, mongoose , dotenv
