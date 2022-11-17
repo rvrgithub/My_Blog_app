@@ -11,54 +11,54 @@ const gererateToken = (user) => {
 };
 //........................ registration part .........................//
 exports.registerUser = async (req, res) => {
-  console.log("res",res)
-    try {
-      // check email is alreay exist or not?....
-      let user = await User.findOne({ email: req.body.email });
-      if (user) {
-        // if is present
-        return res.status(404).send({ message: "Email is already Exist" });
-      }
-      // create new user ...
-      const {firstName,lastName,email,password} = req.body;
-      // console.log("name",firstName)
-      user = await User.create({
-        firstName,
-        lastName,
-          email,
-          password,
-          avatar:{
-              public_id:"This is a sample id",
-              url: "profilePicUrl"
-          }
-      });
-      const token = gererateToken(user);
-      return res.status(201).send({ user, token });
-    } catch (err) {
-      res.status(404).send({ messag: err.message });
+  console.log("res", res);
+  try {
+    // check email is alreay exist or not?....
+    let user = await User.findOne({ email: req.body.email });
+    if (user) {
+      // if is present
+      return res.status(404).send({ message: "Email is already Exist" });
     }
-  };
-  
+    // create new user ...
+    const { firstName, lastName, email, password } = req.body;
+    // console.log("name",firstName)
+    user = await User.create({
+      firstName,
+      lastName,
+      email,
+      password,
+      avatar: {
+        public_id: "This is a sample id",
+        url: "profilePicUrl",
+      },
+    });
+    const token = gererateToken(user);
+    return res.status(201).send({ user, token });
+  } catch (err) {
+    res.status(404).send({ messag: err.message });
+  }
+};
 
-  // .....................login section..........................//
-  exports.loginUser = async (req, res) => {
-    console.log("res",res)
-    try {
-      const user = await User.findOne({ email: req.body.email }).select("+password");
-      // check if mail exists
-      if (!user) {
-        return res.status(404).send("Wrong Email or Password");
-      }
-      //    if exist and check password
-      const match = user.checkPassword(req.body.password);
-      if (!match) {
-        return res.status(404).send({ message: "Wrong Email or Password" });
-      }
-      // if it match
-      const token = gererateToken(user);
-      return res.status(201).send({ user, token });
-    } catch (err) {
-      return res.status(404).send({ message: err.message });
+// .....................login section..........................//
+exports.loginUser = async (req, res) => {
+  console.log("res", res);
+  try {
+    const user = await User.findOne({ email: req.body.email }).select(
+      "+password"
+    );
+    // check if mail exists
+    if (!user) {
+      return res.status(404).send("Wrong Email or Password");
     }
-  };
-  
+    //    if exist and check password
+    const match = user.checkPassword(req.body.password);
+    if (!match) {
+      return res.status(404).send({ message: "Wrong Email or Password" });
+    }
+    // if it match
+    const token = gererateToken(user);
+    return res.status(201).send({ user, token });
+  } catch (err) {
+    return res.status(404).send({ message: err.message });
+  }
+};
