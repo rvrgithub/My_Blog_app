@@ -19,4 +19,5 @@
 
 
 ### Steps
- - npm i express, mongoose , dotenv
+ - npm i express, mongoose , dotenv,
+ - validator ,bcryptjs, jsonwebtoken
