@@ -1,0 +1,12 @@
+.blog_container{
+    width: 45%;
+    margin:20px  auto;
+    font-size: 35px ;
+    color: crimson;
+    font-weight: 600;
+}
+.form{
+padding: 30px; 
+border: 1px solid rgb(226, 222, 222);
+ border-radius: 20px;
+}
