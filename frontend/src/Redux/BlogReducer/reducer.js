@@ -7,7 +7,7 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 //   console.log("action",action)
-//   console.log("payload",payload)
+  // console.log("payload",payload)
   switch (type) {
     case types.GET_BLOGS_REQUEST:
       return {

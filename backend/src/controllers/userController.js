@@ -11,7 +11,7 @@ const gererateToken = (user) => {
 };
 //........................ registration part .........................//
 exports.registerUser = async (req, res) => {
-  console.log("res", res);
+  // console.log("res", res);
   try {
     // check email is alreay exist or not?....
     let user = await User.findOne({ email: req.body.email });
@@ -21,7 +21,7 @@ exports.registerUser = async (req, res) => {
     }
     // create new user ...
     const { firstName, lastName, email, password } = req.body;
-    // console.log("name",firstName)
+    // console.log("name",res.body)
     user = await User.create({
       firstName,
       lastName,
@@ -33,6 +33,7 @@ exports.registerUser = async (req, res) => {
       },
       blogs:[]
     });
+
     const token = gererateToken(user);
     return res.status(201).send({ user, token });
   } catch (err) {

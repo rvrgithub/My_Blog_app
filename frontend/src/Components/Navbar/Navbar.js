@@ -6,10 +6,11 @@ export const Navbar = () => {
   return (
     <Box className="navbar">
       <Link to="./" className="logo">My Blog</Link>
-      <Link to={"./admin"}>Admin</Link>
-      <Link to="./blog">Create Your Blog</Link>
-      <Link to={"./register"}> Register</Link>
-      
+      <Link to={"./admin"} className="link">Admin</Link>
+      <Link to="./blog" className="link">Add Blog</Link>
+      <Link to={"./myblog"} className="link"> My Blog</Link>
+      <Link to={"./register"} className="link"> Register</Link>
+
     </Box>
   );
 };

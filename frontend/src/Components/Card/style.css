@@ -1,4 +1,14 @@
-/* .blog_card{
-    display: grid;
-    grid-template-columns: 40%,40%;
-} */
+.blog_card{
+    text-align: left;
+    /* padding: 10px; */
+}
+.btn{
+    background-color: transparent;
+    border: 0;
+    background: transparent;
+width: 20px;
+}
+.btn:hover{
+    background-color: transparent;
+    color: red;
+}

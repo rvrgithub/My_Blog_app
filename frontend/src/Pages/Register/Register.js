@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { registerAPI } from "../../Redux/AuthReducer/action";
 export const Register = () => {
   const dispatch = useDispatch();
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [inputData, setInputData] = useState({
     firstName: "",
@@ -16,28 +16,32 @@ const navigate = useNavigate()
   });
   const handleInput = (e) => {
     const { name, value } = e.target;
-    console.log("name", name);
+    // console.log("name", name);
     setInputData({
       ...inputData,
       [name]: value,
     });
   };
-  console.log("inputsData", inputData);
+  // console.log("inputsData", inputData);
   const handleSubmit = (e) => {
     e.preventDefault();
-  //   const payload = {
-  //     firstName: inputData.firstName,
-  //     lastName: inputData.email,
-  //     email: inputData.lastName,
-  //     password: inputData.password,
-  //   };
-    dispatch(registerAPI(inputData)).then((res) => console.log(res))
-    .catch((err) => console.log(err));
-  alert("Registration Successfull");
-  navigate("/login");
+    if (
+      inputData.email &&
+      inputData.password &&
+      inputData.firstName &&
+      inputData.lastName
+    ) {
+      dispatch(registerAPI(inputData))
+        .then((res) =>  console.log("resr",res.data))
+        .catch((err) => console.log(err));
+      alert("Registration Successfull");
+      navigate("/login");
+    } else {
+      alert("Please Fill The Credentials");
+    }
   };
   return (
-    <Box justify="center" mt={"25px"}>
+    <Box justify="center" mt={"100px"}>
       <Flex
         justify="center"
         align="center"
@@ -89,7 +93,7 @@ const navigate = useNavigate()
             value={inputData.email}
             onChange={(e) => handleInput(e)}
           />
-          <select onChange={(e)=>handleInput(e)}>
+          <select onChange={(e) => handleInput(e)}>
             <option vlaue="admin">Admin</option>
             <option value="user">Content Writer</option>
           </select>

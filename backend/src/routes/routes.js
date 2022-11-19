@@ -25,14 +25,16 @@ router.get(
   // authorise("admin"),
   getAllContent
 );
-router.get("/user", getAllUser);
 router
   .route("/blog/:id")
   .put(authenticate, authorise(["admin", "content_writer"]), updateContent)
   .delete(authenticate, authorise(["admin", "content_writer"]), deleteContent)
   .get(getContentById);
 
+
+  
 // for all user auth...
+router.get("/user", getAllUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 module.exports = router;

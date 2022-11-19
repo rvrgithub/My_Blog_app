@@ -1,8 +1,8 @@
 .blog_container{
     width: 45%;
-    margin:20px  auto;
+    margin:100px  auto;
     font-size: 35px ;
-    color: crimson;
+    /* color: crimson; */
     font-weight: 600;
 }
 .form{

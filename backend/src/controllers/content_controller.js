@@ -5,8 +5,8 @@ const Content = require("../models/contentModel");
 exports.createContent = async (req, res) => {
   try {
     const content = await Content.create(req.body);
-    console.log("content", content);
-    // console.log("req.body", req.body);
+    // console.log("content", content);
+    console.log("req.body", req.body);
 
     return res.status(201).send({
       success: true,
