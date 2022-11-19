@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Admin } from '../../Pages/Admin';
 import { Home } from '../../Pages/Home/Home';
-import { Login } from '../../Pages/Login';
-import { Register } from '../../Pages/Register';
+import { Login } from '../../Pages/Login/Login';
+import { Register } from '../../Pages/Register/Register';
 import { SingleBlog } from '../../Pages/SingleBlog/SingleBlog';
 import { CreateBlog } from '../Create Blog/CreateBlog';
 

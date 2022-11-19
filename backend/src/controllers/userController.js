@@ -31,6 +31,7 @@ exports.registerUser = async (req, res) => {
         public_id: "This is a sample id",
         url: "profilePicUrl",
       },
+      blogs:[]
     });
     const token = gererateToken(user);
     return res.status(201).send({ user, token });
@@ -62,3 +63,17 @@ exports.loginUser = async (req, res) => {
     return res.status(404).send({ message: err.message });
   }
 };
+
+// get all userData ... for admin
+exports.getAllUser = async(req,res)=>{
+  try {
+    const user = await User.find().lean().exec();
+    res.status(201).send({
+      success: true,
+      user,
+    });
+    // console.log("user", user);
+  } catch (err) {
+    await res.status(404).send({ message: "Route is working fine" });
+  }
+}

@@ -5,7 +5,7 @@ const Content = require("../models/contentModel");
 exports.createContent = async (req, res) => {
   try {
     const content = await Content.create(req.body);
-    // console.log("content", content);
+    console.log("content", content);
     // console.log("req.body", req.body);
 
     return res.status(201).send({
@@ -66,6 +66,23 @@ exports.deleteContent = async (req, res) => {
     return res
       .status(201)
       .send({ success: true, message: "content delete successfully" });
+  } catch (err) {
+    return res.status(404).send({ message: err.message });
+  }
+};
+
+
+// get content by id .....
+exports.getContentById = async (req, res, next) => {
+  try {
+    const content = await Content.findById(req.params.id);
+    if (!content) {
+      return res.status(404).send({
+        success: false,
+        message: "content not find",
+      });
+    }
+    res.status(201).send({ success: true, content });
   } catch (err) {
     return res.status(404).send({ message: err.message });
   }

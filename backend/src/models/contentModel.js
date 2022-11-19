@@ -8,7 +8,7 @@ const contentSchema = new mongoose.Schema(
     description: {
       type: String,
       // required: [true, "Please write your description"],
-      minLength: [10, "Please write altest 200 words"],
+      minLength: [100, "Please write altest 200 words"],
     },
     image: [
       {
@@ -22,6 +22,11 @@ const contentSchema = new mongoose.Schema(
         },
       },
     ],
+    user:{
+      type:mongoose.Types.ObjectId,
+      ref:"User",
+      required:true
+    }
   },
   {
     versionKey: false,

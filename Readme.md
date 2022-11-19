@@ -5,6 +5,8 @@
 
 ### Steps
   - npx create-react-app ./
+  - npm i axios, react-router-dom,redux  
+    react-redux, redux-thunk, thunk, chakra-ui/icons
   
 
 
