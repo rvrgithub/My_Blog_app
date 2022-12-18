@@ -13,24 +13,12 @@ const contentSchema = new mongoose.Schema(
     image:{
       type:String,
       require:true
+    },
+    user:{
+      type:mongoose.Types.ObjectId,
+      ref:"User",
+      required:true
     }
-    // image: [
-    //   {
-    //     url: {
-    //       type: String,
-    //       // required: true,
-    //     },
-    //     public_id: {
-    //       type: String,
-    //       // required: true,
-    //     },
-    //   },
-    // ],
-    // user:{
-    //   type:mongoose.Types.ObjectId,
-    //   ref:"User",
-    //   required:true
-    // }
   },
   {
     versionKey: false,

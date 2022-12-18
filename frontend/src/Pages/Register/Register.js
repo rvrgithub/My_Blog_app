@@ -7,7 +7,7 @@ import { registerAPI } from "../../Redux/AuthReducer/action";
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const [inputData, setInputData] = useState({
     firstName: "",
     lastName: "",
@@ -24,6 +24,8 @@ export const Register = () => {
   };
   // console.log("inputsData", inputData);
   const handleSubmit = (e) => {
+    console.log("input",inputData)
+    // localStorage.setItem("user_Id",JSON.stringify(res.data)
     e.preventDefault();
     if (
       inputData.email &&
@@ -32,8 +34,9 @@ export const Register = () => {
       inputData.lastName
     ) {
       dispatch(registerAPI(inputData))
-        .then((res) =>  console.log("resr",res.data))
-        .catch((err) => console.log(err));
+        .then((res) =>console.log("res.data",res.data)
+        )
+        .catch((err) =>alert(err.response.data.message));
       alert("Registration Successfull");
       navigate("/login");
     } else {

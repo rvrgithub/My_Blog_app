@@ -6,7 +6,7 @@ export const Admin = () => {
   const [user,setUser] = useState([]);
 
   const getAllUser =()=>{
-    axios.get("http://localhost:4500/user")
+    axios.get("https://recoveroio.herokuapp.com/user")
     .then((res)=>setUser(res.data.user))
     .catch((err)=>console.log("err",err));
   }

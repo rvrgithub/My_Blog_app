@@ -39,11 +39,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    blogs:[{
-      type:mongoose.Types.ObjectId,
-      ref:"Content",
-      required:true
-    }]
+    blogs: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Content",
+        required: true,
+      },
+    ],
   },
   {
     versionKey: false,

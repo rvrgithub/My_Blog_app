@@ -33,7 +33,7 @@ export const Login = () => {
       console.log("login payload" ,res.user_id)
      
       if (res === USER_LOGIN_SUCCESS) {
-        // console.log("res",res)
+        console.log("res",res)
         localStorage.setItem("loginUser", JSON.stringify(token));
         alert("Login successful");
         navigate("/");

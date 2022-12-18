@@ -25,25 +25,25 @@ exports.registerUser = async (req, res) => {
     user = await User.create({
       firstName,
       lastName,
-      email,
+      email, 
       password,
       avatar: {
         public_id: "This is a sample id",
         url: "profilePicUrl",
       },
-      blogs:[]
+      blogs: [],
     });
 
     const token = gererateToken(user);
     return res.status(201).send({ user, token });
   } catch (err) {
-    res.status(404).send({ messag: err.message });
+    res.status(404).send({ message: err.message });
   }
 };
 
 // .....................login section..........................//
 exports.loginUser = async (req, res) => {
-  console.log("res", res);
+  // console.log("res", res);
   try {
     const user = await User.findOne({ email: req.body.email }).select(
       "+password"
@@ -66,7 +66,7 @@ exports.loginUser = async (req, res) => {
 };
 
 // get all userData ... for admin
-exports.getAllUser = async(req,res)=>{
+exports.getAllUser = async (req, res) => {
   try {
     const user = await User.find().lean().exec();
     res.status(201).send({
@@ -77,4 +77,21 @@ exports.getAllUser = async(req,res)=>{
   } catch (err) {
     await res.status(404).send({ message: "Route is working fine" });
   }
-}
+};
+
+// get user by id .....
+exports.getUserById = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "user not find",
+      });
+    }
+    res.status(201).send({ success: true, user });
+  } catch (err) {
+    return res.status(404).send({ message: err.message });
+  }
+};
+

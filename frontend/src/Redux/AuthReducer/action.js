@@ -1,14 +1,15 @@
 import * as types from "./actionType";
 import axios from "axios";
-
+// https://recoveroio.herokuapp.com/http:/
 export const registerAPI = (params) => (dispatch) => {
+  console.log("params",params);
   return axios
     .post("http://localhost:4500/register", params)
     .then((res) => {
-      dispatch({ type: types.USER_REGISTER});
+      dispatch({ type: types.USER_REGISTER,payload:localStorage.setItem("user_Id",JSON.stringify(res.data.user))});
     });
 };
-
+// https://recoveroio.herokuapp.com
 export const loginApi = (params) => (dispatch) => {
   dispatch({ type: types.USER_LOGIN_REQUEST });
   return axios
